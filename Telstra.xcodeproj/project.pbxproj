@@ -207,6 +207,7 @@
 				TargetAttributes = {
 					7D6EEC721EDF6E2C0070BBE5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 69VU96BCPE;
 					};
 					7D6EEC8B1EDF6E2D0070BBE5 = {
 						CreatedOnToolsVersion = 7.2;
@@ -344,7 +345,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: sardar.sandesh@gmail.com (7CYTW88D2L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sardar.sandesh@gmail.com (7CYTW88D2L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -388,7 +390,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: sardar.sandesh@gmail.com (7CYTW88D2L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sardar.sandesh@gmail.com (7CYTW88D2L)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -413,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Telstra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
@@ -424,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Telstra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
@@ -498,6 +503,7 @@
 				7D6EECA21EDF6E2D0070BBE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D6EECA31EDF6E2D0070BBE5 /* Build configuration list for PBXNativeTarget "TelstraTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +512,7 @@
 				7D6EECA51EDF6E2D0070BBE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D6EECA61EDF6E2D0070BBE5 /* Build configuration list for PBXNativeTarget "TelstraUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +521,7 @@
 				7D6EECA81EDF6E2D0070BBE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
