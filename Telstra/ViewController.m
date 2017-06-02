@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
@@ -34,6 +35,7 @@
     
     self.content = [[NSMutableArray alloc]init];
     self.navigationTitle = @" ";
+    
     
     [self fetchData];
 }
@@ -71,10 +73,10 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (self.content.count > 0) {
-//        return   _content.count ;
-//    }
-    return 3;
+    if (self.content.count > 0) {
+        return   _content.count ;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,15 +108,28 @@
         
         //---- Navigation Title
         UINavigationBar *myNav = (UINavigationBar *)[self.view viewWithTag:1001];
-        UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:self.navigationTitle];
+//        UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:self.navigationTitle];
+        UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"asfasf"];
         myNav.items = [NSArray arrayWithObjects: navigItem,nil];
         
         
-
-        
+    
+   
         
         
         //----------- Image asynchronous Downloading ------(start)------------
+
+//        if(![imageUrlString isKindOfClass:[NSNull class]]){
+//            NSURL *imgURL = [NSURL URLWithString:imageUrlString];
+//            
+//            [self downloadImageWithURL:imgURL
+//                       completionBlock:^(BOOL succeeded, UIImage *image) {
+//                           cell.imageView.image=image;
+//                       }];
+//        }
+     
+        
+        
         
         //---- using SDWebImage framework
         //        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[contentdata objectForKey:@"imageHref"]]
@@ -132,17 +147,18 @@
         
         
         //------------ using GCD --------------(start)----------------
-        
-        //        dispatch_async(dispatch_get_global_queue(0,0), ^{
-        //            NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: @"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"]];
-        //            if ( data == nil )
-        //                return;
-        //            dispatch_async(dispatch_get_main_queue(), ^{
-        //                // WARNING: is the cell still using the same data by this point??
-        //                cell.imageView.image = [UIImage imageWithData: data];
-        //            });
-        //        });
-        
+        if(![imageUrlString isKindOfClass:[NSNull class]]){
+
+                dispatch_async(dispatch_get_global_queue(0,0), ^{
+                  NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlString]];
+                    if ( data == nil )
+                        return;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // WARNING: is the cell still using the same data by this point??
+                        cell.imageView.image = [UIImage imageWithData: data];
+                    });
+                });
+        }
         //------------ using GCD --------------(end)----------------
         
         
