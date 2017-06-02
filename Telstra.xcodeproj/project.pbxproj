@@ -17,7 +17,7 @@
 		7D6EEC861EDF6E2D0070BBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D6EEC841EDF6E2D0070BBE5 /* LaunchScreen.storyboard */; };
 		7D6EEC911EDF6E2D0070BBE5 /* TelstraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6EEC901EDF6E2D0070BBE5 /* TelstraTests.m */; };
 		7D6EEC9C1EDF6E2D0070BBE5 /* TelstraUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6EEC9B1EDF6E2D0070BBE5 /* TelstraUITests.m */; };
-		7DD96F651EE071EF0026073D /* demoImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD96F641EE071EF0026073D /* demoImg.png */; };
+		7D8442981EE1E70B00F93D90 /* demoImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D8442971EE1E70B00F93D90 /* demoImg.png */; };
 		8FE4342E18EA5A9DA229981B /* libPods-Telstra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2781280EDA9C6B0F3D06D5 /* libPods-Telstra.a */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +56,8 @@
 		7D6EEC971EDF6E2D0070BBE5 /* TelstraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TelstraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6EEC9B1EDF6E2D0070BBE5 /* TelstraUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelstraUITests.m; sourceTree = "<group>"; };
 		7D6EEC9D1EDF6E2D0070BBE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DD96F641EE071EF0026073D /* demoImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoImg.png; sourceTree = "<group>"; };
+		7D8442951EE1DE8900F93D90 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "Pods/../build/Debug-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
+		7D8442971EE1E70B00F93D90 /* demoImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoImg.png; sourceTree = "<group>"; };
 		922335E45E3020C33CB0CDA1 /* Pods-TelstraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelstraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelstraTests/Pods-TelstraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA5D423218CC30AC44C2B0A9 /* Pods-Telstra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telstra.release.xcconfig"; path = "Pods/Target Support Files/Pods-Telstra/Pods-Telstra.release.xcconfig"; sourceTree = "<group>"; };
 		AD72DA5AB98C029A0440DE16 /* Pods-TelstraTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelstraTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TelstraTests/Pods-TelstraTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,7 +125,7 @@
 				7D6EEC7A1EDF6E2C0070BBE5 /* AppDelegate.m */,
 				7D6EEC7C1EDF6E2C0070BBE5 /* ViewController.h */,
 				7D6EEC7D1EDF6E2C0070BBE5 /* ViewController.m */,
-				7DD96F641EE071EF0026073D /* demoImg.png */,
+				7D8442971EE1E70B00F93D90 /* demoImg.png */,
 				7D6EEC7F1EDF6E2D0070BBE5 /* Main.storyboard */,
 				7D6EEC821EDF6E2D0070BBE5 /* Assets.xcassets */,
 				7D6EEC841EDF6E2D0070BBE5 /* LaunchScreen.storyboard */,
@@ -163,6 +164,7 @@
 		B375B9E2A11F3F4D5A7D86F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D8442951EE1DE8900F93D90 /* libSDWebImage.a */,
 				BD2781280EDA9C6B0F3D06D5 /* libPods-Telstra.a */,
 				D44596C986F3DB8106D589D1 /* libPods-TelstraTests.a */,
 				72383EE2312F82F330D201A3 /* libPods-TelstraUITests.a */,
@@ -296,7 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DD96F651EE071EF0026073D /* demoImg.png in Resources */,
+				7D8442981EE1E70B00F93D90 /* demoImg.png in Resources */,
 				7D6EEC861EDF6E2D0070BBE5 /* LaunchScreen.storyboard in Resources */,
 				7D6EEC831EDF6E2D0070BBE5 /* Assets.xcassets in Resources */,
 				7D6EEC811EDF6E2D0070BBE5 /* Main.storyboard in Resources */,
@@ -523,6 +525,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7,",
+					"armv7s,",
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -568,6 +576,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7,",
+					"armv7s,",
+					arm64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -597,6 +611,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -611,6 +626,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Telstra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -624,6 +640,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Telstra/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
