@@ -16,11 +16,6 @@
 @property (strong,nonatomic) NSMutableArray *content;
 @property (nonatomic, assign) NSString *navigationTitle;
 
-@property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, assign) NSInteger totalPages;
-@property (nonatomic, assign) NSInteger totalItems;
-@property (nonatomic, assign) NSInteger maxPages;
-@property (nonatomic, strong) NSMutableArray *photos;
 
 
 @end
@@ -109,27 +104,12 @@
         //---- Navigation Title
         UINavigationBar *myNav = (UINavigationBar *)[self.view viewWithTag:1001];
 //        UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:self.navigationTitle];
-        UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"asfasf"];
-        myNav.items = [NSArray arrayWithObjects: navigItem,nil];
+//        myNav.items = [NSArray arrayWithObjects: navigItem,nil];
         
-        
-    
-   
-        
+               
         
         //----------- Image asynchronous Downloading ------(start)------------
-
-//        if(![imageUrlString isKindOfClass:[NSNull class]]){
-//            NSURL *imgURL = [NSURL URLWithString:imageUrlString];
-//            
-//            [self downloadImageWithURL:imgURL
-//                       completionBlock:^(BOOL succeeded, UIImage *image) {
-//                           cell.imageView.image=image;
-//                       }];
-//        }
-     
-        
-        
+   
         
         //---- using SDWebImage framework
         //        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[contentdata objectForKey:@"imageHref"]]
@@ -139,14 +119,10 @@
         //                                         NSLog(@"Error occured : %@", [error description]);
         //                                     }
         //                                 }];
-        
-        //----------- Image asynchronous Downloading -----------(end)------------
-        
+       
         
         
-        
-        
-        //------------ using GCD --------------(start)----------------
+        //------------ using GCD ---------
         if(![imageUrlString isKindOfClass:[NSNull class]]){
 
                 dispatch_async(dispatch_get_global_queue(0,0), ^{
@@ -159,8 +135,10 @@
                     });
                 });
         }
-        //------------ using GCD --------------(end)----------------
+        //------------ using GCD -----
         
+        
+        //----------- Image asynchronous Downloading -----------(end)------------
         
         //------ alternate cell color ------
         if(indexPath.row % 2 == 0){
@@ -210,11 +188,6 @@
             self.navigationTitle = jsonDict[@"title"];
             
             
-            
-            self.currentPage = [[jsonDict objectForKey:@"current_page"] integerValue];
-            self.totalPages  = [[jsonDict objectForKey:@"total_pages"] integerValue];
-            self.totalItems  = [[jsonDict objectForKey:@"total_items"] integerValue];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
                 
@@ -229,23 +202,6 @@
     
 }
 
-
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if ( !error )
-                               {
-                                   data = [NSData dataWithContentsOfURL:url];
-                                   UIImage *image = [[UIImage alloc] initWithData:data];
-                                   completionBlock(YES,image);
-                               } else{
-                                   NSLog(@"Error in downloading image:%@",url);
-                                   completionBlock(NO,nil);
-                               }
-                           }];
-}
 
 
 @end
