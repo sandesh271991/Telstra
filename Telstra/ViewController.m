@@ -29,13 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self cofigureTableview];
-
     
     [self addNavigationBar];
     
     self.content = [[NSMutableArray alloc]init];
-    self.navigationTitle = @"";
-
+    self.navigationTitle = @" ";
+    
     [self fetchData];
 }
 
@@ -60,13 +59,9 @@
     myNav.tag = 1001;
     
     [self.view addSubview:myNav];
-
     
-  
-    
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Title1"];
+    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Title"];
     myNav.items = [NSArray arrayWithObjects: navigItem,nil];
-    
 }
 
 
@@ -76,10 +71,10 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.content.count > 0) {
-        return   _content.count ;
-    }
-    return 0;
+//    if (self.content.count > 0) {
+//        return   _content.count ;
+//    }
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,14 +84,14 @@
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-
+    
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
     
     if (self.content.count > 0){
-    
+        
         NSDictionary *contentdata = self.content[indexPath.row];
         
         NSString *title = contentdata[@"description"];
@@ -104,16 +99,22 @@
         //NSString *description = contentdata[@"description"];
         
         cell.textLabel.text =  [title isKindOfClass:[NSNull class]] ? @"" : title;  //----- Title
+        cell.imageView.image = [UIImage imageNamed:@"demoImg.png"];
+        //cell.detailTextLabel.text  =  [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- Description
+        
+        
         
         //---- Navigation Title
         UINavigationBar *myNav = (UINavigationBar *)[self.view viewWithTag:1001];
         UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:self.navigationTitle];
         myNav.items = [NSArray arrayWithObjects: navigItem,nil];
         
-     //  cell.detailTextLabel.text  =  [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- Description
+        
+
         
         
-        //---- Image asynchronous Downloading ------------
+        
+        //----------- Image asynchronous Downloading ------(start)------------
         
         //---- using SDWebImage framework
         //        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[contentdata objectForKey:@"imageHref"]]
@@ -124,12 +125,13 @@
         //                                     }
         //                                 }];
         
+        //----------- Image asynchronous Downloading -----------(end)------------
         
         
         
-        cell.imageView.image = [UIImage imageNamed:@"demoImg.png"];
         
-        //---- using GCD --
+        
+        //------------ using GCD --------------(start)----------------
         
         //        dispatch_async(dispatch_get_global_queue(0,0), ^{
         //            NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: @"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"]];
@@ -141,32 +143,37 @@
         //            });
         //        });
         
+        //------------ using GCD --------------(end)----------------
         
+        
+        //------ alternate cell color ------
         if(indexPath.row % 2 == 0){
             UIColor *cellColour = [[UIColor alloc] initWithRed: 231.0/255.0 green: 231.0/255.0 blue: 231.0/255.0 alpha: 1.0];
             cell.backgroundColor = cellColour;
         }
     }
     
+    
+    //--------- for multiline cell ------------
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     cell.detailTextLabel.numberOfLines = 0;
     
     
-
-
+    
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    // NSLog(@"title of cell %@", [_content objectAtIndex:indexPath.row]);
+    
 }
 
 
 
-//---- api call --
+//----------------- api call ------------------------------
 -(void)fetchData{
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -186,7 +193,6 @@
             self.content = jsonDict[@"rows"];
             self.navigationTitle = jsonDict[@"title"];
             
-      
             
             
             self.currentPage = [[jsonDict objectForKey:@"current_page"] integerValue];
@@ -195,7 +201,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
-          
+                
             });
             
             NSLog(@"result %@", self.content);
@@ -207,6 +213,23 @@
     
 }
 
+
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   data = [NSData dataWithContentsOfURL:url];
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   NSLog(@"Error in downloading image:%@",url);
+                                   completionBlock(NO,nil);
+                               }
+                           }];
+}
 
 
 @end
