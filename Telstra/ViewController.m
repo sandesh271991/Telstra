@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+
+
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>
 
 @property (strong,nonatomic) UITableView *tableView;
@@ -90,7 +92,7 @@
 
 
 
-//---- api call --
+//---- api call ---
 -(void)fetchData{
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -111,6 +113,7 @@
             [self.tableView reloadData];
             
             NSLog(@"result %@", self.content);
+            
         
         }
         
