@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <UIImageView+WebCache.h>
-#import "SDWebImageManager.h"
+//#import <SDWebImage/UIImageView+WebCache.h>
+//#import <UIImageView+WebCache.h>
+//#import "SDWebImageManager.h"
 #import "APIDataFetcher.h"
 
 #define API_URL @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"

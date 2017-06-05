@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FBA442977DFCBA6855C254EAA83A0F25'
-               BlueprintName = 'Pods-Telstra-TelstraTests'
+               BlueprintIdentifier = '0857757CA24DB2FED22DE3C994393F73'
+               BlueprintName = 'Pods-TelstraTests'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Telstra-TelstraTests.a'>
+               BuildableName = 'libPods-TelstraTests.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

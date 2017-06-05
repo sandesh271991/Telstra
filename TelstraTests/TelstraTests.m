@@ -14,6 +14,7 @@
 #import <XCTest/XCTest.h>
 //#import "ViewController_Private.h"
 #import "ViewController.h"
+#import "APIDataFetcher.h"
 
 @interface TelstraTests : XCTestCase
 
@@ -81,29 +82,20 @@
 - (void)testTableViewNumberOfRowsInSection
 {
 
-    if (self.vc.content.count > 0) {
+    
       NSInteger expectedRows = self.vc.content.count;
-    }
-//
-//    
-//    XCTAssertTrue([self.vc tableView:self.vc.tableView numberOfRowsInSection:0]==expectedRows, @"Table has %ld rows but it should have %ld", (long)[self.vc tableView:self.vc.tableView numberOfRowsInSection:0], (long)expectedRows);
-//    
+ 
+    XCTAssertTrue([self.vc.tableView numberOfRowsInSection:0] ==expectedRows, @"Table has %ld rows but it should have %ld", (long)[self.vc.tableView numberOfRowsInSection:0],(long)expectedRows);
     
 }
 
-//- (void)testTableViewHeightForRowAtIndexPath
-//{
-//    CGFloat expectedHeight = 44.0;
-//    CGFloat actualHeight = self.vc.tableView.rowHeight;
-//    XCTAssertEqual(expectedHeight, actualHeight, @"Cell should have %f height, but they have %f", expectedHeight, actualHeight);
-//}
+- (void)testTableViewCellCreateCellsWithReuseIdentifier
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = [self.vc.tableView cellForRowAtIndexPath:indexPath];
+    NSString *expectedReuseIdentifier = [NSString stringWithFormat:@"%ld/%ld",(long)indexPath.section,(long)indexPath.row];
+    XCTAssertTrue([cell.reuseIdentifier isEqualToString:expectedReuseIdentifier], @"Table does not create reusable cells");
+}
 
-//- (void)testTableViewCellCreateCellsWithReuseIdentifier
-//{
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    UITableViewCell *cell = [self.vc tableView:self.vc.tableView cellForRowAtIndexPath:indexPath];
-//    NSString *expectedReuseIdentifier = [NSString stringWithFormat:@"%ld/%ld",(long)indexPath.section,(long)indexPath.row];
-//    XCTAssertTrue([cell.reuseIdentifier isEqualToString:expectedReuseIdentifier], @"Table does not create reusable cells");
-//}
 
 @end

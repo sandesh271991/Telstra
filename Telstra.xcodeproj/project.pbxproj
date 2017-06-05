@@ -440,7 +440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Telstra-TelstraTests/Pods-Telstra-TelstraTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TelstraTests/Pods-TelstraTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8BCA755C8334E326A781551 /* [CP] Embed Pods Frameworks */ = {
@@ -455,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Telstra-TelstraTests/Pods-Telstra-TelstraTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TelstraTests/Pods-TelstraTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDEDD2FBBAE663B8CC62E4CE /* [CP] Check Pods Manifest.lock */ = {
@@ -596,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -641,7 +641,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -661,7 +661,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
 				);
 				INFOPLIST_FILE = Telstra/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -681,7 +681,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
 				);
 				INFOPLIST_FILE = Telstra/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -692,11 +692,17 @@
 		};
 		7D6EECA41EDF6E2D0070BBE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 950583C807BEA06760AD8CF7 /* Pods-Telstra-TelstraTests.debug.xcconfig */;
+			baseConfigurationReference = 922335E45E3020C33CB0CDA1 /* Pods-TelstraTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TelstraTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"ImageIO\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.TelstraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Telstra.app/Telstra";
@@ -705,11 +711,17 @@
 		};
 		7D6EECA51EDF6E2D0070BBE5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D11058036EDA2E4BF437CDDD /* Pods-Telstra-TelstraTests.release.xcconfig */;
+			baseConfigurationReference = AD72DA5AB98C029A0440DE16 /* Pods-TelstraTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TelstraTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"ImageIO\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.TelstraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Telstra.app/Telstra";

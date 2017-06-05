@@ -8,6 +8,7 @@ target 'Telstra' do
   # Pods for Telstra
 
   target 'TelstraTests' do
+    inherit! :search_paths
 pod 'SDWebImage', '~>3.7'
   end
 

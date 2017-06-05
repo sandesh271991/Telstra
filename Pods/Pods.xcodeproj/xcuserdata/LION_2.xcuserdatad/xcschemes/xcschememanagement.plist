@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Telstra-TelstraTests.xcscheme</key>
+		<key>Pods-Telstra.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Telstra.xcscheme</key>
+		<key>Pods-TelstraTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,7 +27,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>472B684E1DD40EBF7BD9306E2317D5EA</key>
+		<key>0857757CA24DB2FED22DE3C994393F73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA8A0FF2C57317769F64D46A7FF9401C</key>
+		<key>B7D8A9CD52C180D0FB847B3E46721B74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBA442977DFCBA6855C254EAA83A0F25</key>
+		<key>CA8A0FF2C57317769F64D46A7FF9401C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -14,7 +14,7 @@
  +(void)loadDataFromAPI: (NSString *)url parameter:(NSString *)params callback:(void(^)(NSDictionary *result, NSError *error))callback {
     
      NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-     [request setURL:[NSURL URLWithString:@"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"]];
+     [request setURL:[NSURL URLWithString:url]];
      [request setHTTPMethod:@"GET"];
      [request addValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
      [request addValue:@"text/plain" forHTTPHeaderField:@"Accept"];
