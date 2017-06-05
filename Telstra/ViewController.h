@@ -10,9 +10,8 @@
 
 @interface ViewController : UIViewController{
     
-    
 }
-
-
+@property (strong,nonatomic) UITableView *tableView;
+@property (strong,nonatomic) NSMutableArray *content;
 @end
 

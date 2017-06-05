@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImageView+WebCache.h>
+#import "SDWebImageManager.h"
 
 
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>
 
-@property (strong,nonatomic) UITableView *tableView;
-@property (strong,nonatomic) NSMutableArray *content;
+//@property (strong,nonatomic) UITableView *tableView;
+//@property (strong,nonatomic) NSMutableArray *content;
 @property (nonatomic, assign) NSString *navigationTitle;
 
 
@@ -38,6 +40,7 @@
 -(void)cofigureTableview
 {
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+   
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -87,6 +90,7 @@
         
     }
     
+    
     if (self.content.count > 0){
         
         NSDictionary *contentdata = self.content[indexPath.row];
@@ -112,16 +116,26 @@
    
         
         //---- using SDWebImage framework
-        //        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[contentdata objectForKey:@"imageHref"]]
-        //                          placeholderImage:[UIImage imageNamed:@"demoImg.png"]
-        //                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        //                                     if (error) {
-        //                                         NSLog(@"Error occured : %@", [error description]);
-        //                                     }
-        //                                 }];
-       
+//        if(![imageUrlString isKindOfClass:[NSNull class]]){
+//                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString]
+//                                  placeholderImage:nil
+//                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//                                             if (error) {
+//                                                 NSLog(@"Error occured : %@", [error description]);
+//                                             }
+//                                         }];
+//        }
+//        if(![imageUrlString isKindOfClass:[NSNull class]]){
+//
+//        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://static.pexels.com/photos/115045/pexels-photo-115045.jpeg"]
+//                          placeholderImage:UIImage(named: "demoImg")];
+//        }
         
-        
+//         if(![imageUrlString isKindOfClass:[NSNull class]]){
+//        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString]];
+//         }
+        //cell.imageView.sd_setImage(with: URL(string: imageUrlString), placeholderImage: UIImage(named: "demoImg.png"))
+
         //------------ using GCD ---------
         if(![imageUrlString isKindOfClass:[NSNull class]]){
 
@@ -164,6 +178,23 @@
 {
     
 }
+
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+   
+    [self cofigureTableview];
+    //[self.tableView reloadData];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    [self addNavigationBar];
+
+
+}
+
 
 
 
