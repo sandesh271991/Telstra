@@ -147,8 +147,7 @@
 			children = (
 				7D6EEC791EDF6E2C0070BBE5 /* AppDelegate.h */,
 				7D6EEC7A1EDF6E2C0070BBE5 /* AppDelegate.m */,
-				7D6EEC7C1EDF6E2C0070BBE5 /* ViewController.h */,
-				7D6EEC7D1EDF6E2C0070BBE5 /* ViewController.m */,
+				7D8A758A1EE70E0B00A34716 /* VIew */,
 				7D848B011EE5F87700CD8B70 /* API */,
 				7D8442971EE1E70B00F93D90 /* demoImg.png */,
 				7D6EEC7F1EDF6E2D0070BBE5 /* Main.storyboard */,
@@ -193,6 +192,15 @@
 				7D848AFF1EE5CB2600CD8B70 /* APIDataFetcher.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		7D8A758A1EE70E0B00A34716 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				7D6EEC7C1EDF6E2C0070BBE5 /* ViewController.h */,
+				7D6EEC7D1EDF6E2C0070BBE5 /* ViewController.m */,
+			);
+			name = VIew;
 			sourceTree = "<group>";
 		};
 		B375B9E2A11F3F4D5A7D86F8 /* Frameworks */ = {
