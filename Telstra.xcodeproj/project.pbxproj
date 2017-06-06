@@ -21,6 +21,9 @@
 		7D8442981EE1E70B00F93D90 /* demoImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D8442971EE1E70B00F93D90 /* demoImg.png */; };
 		7D84429C1EE217C700F93D90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D84429B1EE217C700F93D90 /* Foundation.framework */; };
 		7D848B001EE5CB2600CD8B70 /* APIDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D848AFF1EE5CB2600CD8B70 /* APIDataFetcher.m */; };
+		7D848B031EE6110C00CD8B70 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B021EE6110C00CD8B70 /* libSDWebImage.a */; };
+		7D848B051EE6116800CD8B70 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B041EE6116800CD8B70 /* libc++.tbd */; };
+		7D848B071EE6117700CD8B70 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B061EE6117700CD8B70 /* libsqlite3.tbd */; };
 		CF2858B01878BB4CD66096FC /* libPods-Telstra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B26ABC454715BD97C70AB /* libPods-Telstra.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,10 @@
 		7D848AFC1EE5AE2500CD8B70 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "Pods/../build/Debug-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
 		7D848AFE1EE5CB2600CD8B70 /* APIDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIDataFetcher.h; sourceTree = "<group>"; };
 		7D848AFF1EE5CB2600CD8B70 /* APIDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIDataFetcher.m; sourceTree = "<group>"; };
+		7D848B021EE6110C00CD8B70 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "Pods/../build/Debug-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
+		7D848B041EE6116800CD8B70 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7D848B061EE6117700CD8B70 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7D848B081EE6138200CD8B70 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "Pods/../build/Debug-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
 		895B26ABC454715BD97C70AB /* libPods-Telstra.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Telstra.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		922335E45E3020C33CB0CDA1 /* Pods-TelstraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelstraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TelstraTests/Pods-TelstraTests.debug.xcconfig"; sourceTree = "<group>"; };
 		950583C807BEA06760AD8CF7 /* Pods-Telstra-TelstraTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telstra-TelstraTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telstra-TelstraTests/Pods-Telstra-TelstraTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +110,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D848B071EE6117700CD8B70 /* libsqlite3.tbd in Frameworks */,
+				7D848B051EE6116800CD8B70 /* libc++.tbd in Frameworks */,
+				7D848B031EE6110C00CD8B70 /* libSDWebImage.a in Frameworks */,
 				0056B6F258E2F6CE95D88572 /* libPods-TelstraUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +198,10 @@
 		B375B9E2A11F3F4D5A7D86F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D848B081EE6138200CD8B70 /* libSDWebImage.a */,
+				7D848B061EE6117700CD8B70 /* libsqlite3.tbd */,
+				7D848B041EE6116800CD8B70 /* libc++.tbd */,
+				7D848B021EE6110C00CD8B70 /* libSDWebImage.a */,
 				7D848AFC1EE5AE2500CD8B70 /* libSDWebImage.a */,
 				7D84429D1EE21E4900F93D90 /* SDWebImage.framework */,
 				7D84429B1EE217C700F93D90 /* Foundation.framework */,
@@ -599,6 +613,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -644,6 +659,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -663,7 +679,7 @@
 				INFOPLIST_FILE = Telstra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -683,7 +699,7 @@
 				INFOPLIST_FILE = Telstra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.Telstra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +750,16 @@
 			buildSettings = {
 				INFOPLIST_FILE = TelstraUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-force_load",
+					"${BUILT_PRODUCTS_DIR}/libSDWebImageARC.a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.TelstraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = Telstra;
@@ -747,6 +773,16 @@
 			buildSettings = {
 				INFOPLIST_FILE = TelstraUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDWebImage",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-force_load",
+					"${BUILT_PRODUCTS_DIR}/libSDWebImageARC.a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = con.infy.TelstraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = Telstra;
