@@ -49,7 +49,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.content.count > 0) {
-        return   _content.count ;
+        return _content.count ;
     }
     return 0;
 }
@@ -78,7 +78,7 @@
         
         cell.textLabel.text =  [title isKindOfClass:[NSNull class]] ? @"" : title;  //----- Title
         cell.imageView.image = [UIImage imageNamed:@"demoImg.png"];
-       // cell.detailTextLabel.text  =  [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- Description
+       //cell.detailTextLabel.text  =  [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- Description
      
         cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
         cell.contentView.layer.borderWidth = 1.0;
