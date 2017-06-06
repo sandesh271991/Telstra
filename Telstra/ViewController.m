@@ -15,7 +15,10 @@
 #define API_URL @"https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 
 
-@interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>
+@interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>{
+    
+        UIRefreshControl *refreshControl;
+}
 
 @property (nonatomic, assign) NSString *navigationTitle;
 @property (nonatomic, assign)  UINavigationBar *myNav;
@@ -34,12 +37,15 @@
     self.content = [[NSMutableArray alloc]init];
     self.navigationTitle = @" ";
     [self fetchData];
+    [self pullToRefersh];
+
 }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
 }
+
 
 
 //MARK: Tableview Datasource
@@ -193,6 +199,22 @@
     
     UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:self.navigationTitle];
     myNav.items = [NSArray arrayWithObjects: navigItem,nil];
+}
+
+
+//MARK:  Refresh table data on pull
+
+-(void)pullToRefersh{
+    
+    refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refreshTable {
+    //TODO: refresh your data
+    [refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
 
 @end
