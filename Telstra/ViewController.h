@@ -15,14 +15,6 @@
 @property (strong,nonatomic) NSMutableArray *content;
 
 
-////
-
-@property(nonatomic, readonly) UILabel *factTitleLabel;
-@property(nonatomic, readonly) UILabel *factDescriptionLabel;
-@property(nonatomic, readonly) UIImageView *factImageView;
-
-
-///
 
 @end
 

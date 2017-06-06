@@ -25,9 +25,7 @@
 
 @implementation ViewController
 
-@synthesize factImageView = _factImageView;
-@synthesize factDescriptionLabel = _factDescriptionLabel;
-@synthesize factTitleLabel = _factTitleLabel;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
