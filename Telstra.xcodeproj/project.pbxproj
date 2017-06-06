@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0056B6F258E2F6CE95D88572 /* libPods-TelstraUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F110A97464BB3F3338BCE0 /* libPods-TelstraUITests.a */; };
+		0DE5FE2F0A9471B419065D59 /* libPods-Telstra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B26ABC454715BD97C70AB /* libPods-Telstra.a */; };
 		5289B52DDC7CEA21EE23A55D /* libPods-Telstra-TelstraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC6CA428C87C7B17D45E506 /* libPods-Telstra-TelstraTests.a */; };
 		7897EFBF7BC532C54370B56E /* libPods-TelstraTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F151F4187133803A86F247B /* libPods-TelstraTests.a */; };
 		7D6EEC781EDF6E2C0070BBE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6EEC771EDF6E2C0070BBE5 /* main.m */; };
@@ -24,7 +25,6 @@
 		7D848B031EE6110C00CD8B70 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B021EE6110C00CD8B70 /* libSDWebImage.a */; };
 		7D848B051EE6116800CD8B70 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B041EE6116800CD8B70 /* libc++.tbd */; };
 		7D848B071EE6117700CD8B70 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D848B061EE6117700CD8B70 /* libsqlite3.tbd */; };
-		CF2858B01878BB4CD66096FC /* libPods-Telstra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 895B26ABC454715BD97C70AB /* libPods-Telstra.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D84429C1EE217C700F93D90 /* Foundation.framework in Frameworks */,
-				CF2858B01878BB4CD66096FC /* libPods-Telstra.a in Frameworks */,
+				0DE5FE2F0A9471B419065D59 /* libPods-Telstra.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
