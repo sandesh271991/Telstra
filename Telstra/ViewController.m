@@ -17,11 +17,14 @@
 
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource, NSURLSessionDelegate>{
     
-        UIRefreshControl *refreshControl;
+    UIRefreshControl *refreshControl;
 }
 
 @property (nonatomic, assign) NSString *navigationTitle;
 @property (nonatomic, assign)  UINavigationBar *myNav;
+@property (nonatomic, assign)  UILabel *mainLabel;
+@property (nonatomic, assign)  UIImage *mainImg;
+
 
 
 @end
@@ -38,7 +41,7 @@
     self.navigationTitle = @" ";
     [self fetchData];
     [self pullToRefersh];
-
+    
 }
 
 - (void)viewWillLayoutSubviews
@@ -70,51 +73,87 @@
     
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
     }
     
     
     if (self.content.count > 0){
-       
+        
         NSDictionary *contentdata = self.content[indexPath.row];
         
-        NSString *title = contentdata[@"description"];
+        NSString *title = contentdata[@"title"];
         NSString *imageUrlString = contentdata[@"imageHref"];
-       // NSString *description = contentdata[@"title"];
+        NSString *description = contentdata[@"description"];
         
-        cell.textLabel.text =  [title isKindOfClass:[NSNull class]] ? @"" : title;  //----- Title
-        cell.imageView.image = [UIImage imageNamed:@"demoImg.png"];
-       //cell.detailTextLabel.text  =  [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- Description
-     
         cell.contentView.layer.borderColor = [UIColor blackColor].CGColor;
         cell.contentView.layer.borderWidth = 1.0;
-
-
+        
+        //---- Custom Views
+        UIImageView *cellImageView;
+        UILabel *titleLabel;
+        UILabel *descriptionLabel;
+        
+        cellImageView = [[UIImageView alloc] init];
+        cellImageView.translatesAutoresizingMaskIntoConstraints = NO;
+        cellImageView.tag = indexPath.row + 100;
+        [cell.contentView addSubview:cellImageView];
+        
+        titleLabel = [[UILabel alloc] init];
+        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        titleLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+        titleLabel.tag =  indexPath.row + 500;
+        titleLabel.numberOfLines = 0;
+        titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [cell.contentView addSubview:titleLabel];
+        
+        descriptionLabel = [[UILabel alloc] init];
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        descriptionLabel.tag =  indexPath.row + 800;
+        [descriptionLabel setFont:[UIFont fontWithName:@"Arial" size:15]];
+        descriptionLabel.numberOfLines = 0;
+        descriptionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [cell.contentView addSubview:descriptionLabel];
+        
+        
+        //---- Autolayout constraints
+        NSDictionary *views = NSDictionaryOfVariableBindings(cellImageView, titleLabel,descriptionLabel);
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cellImageView]-[titleLabel]|" options:0 metrics:nil views:views]];
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cellImageView]-[descriptionLabel]|" options:0 metrics:nil views:views]];
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cellImageView]-0-|" options:0 metrics:nil views:views]];
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[titleLabel(20)]-[descriptionLabel]-|" options:0 metrics:nil views:views]];
+        [cell.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleLabel]-[descriptionLabel]-10-|" options:0 metrics:nil views:views]];
+        
+        
+        cellImageView.image = [UIImage imageNamed:@"demoImg.png"]; //---- Image
+        titleLabel.text = [title isKindOfClass:[NSNull class]] ? @"" : title;  //----- Title
+        descriptionLabel.text = [description isKindOfClass:[NSNull class]] ? @"" : description;  //----- description
+        
+   
+        
         //----------- Image asynchronous Downloading ------(start)------------
         
         
         //---- using SDWebImage framework
-//                if(![imageUrlString isKindOfClass:[NSNull class]]){
-//                        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString]
-//                                          placeholderImage:nil
-//                                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//                                                     if (error) {
-//                                                         NSLog(@"Error occured : %@", [error description]);
-//                                                     }
-//                                                 }];
-//                }
+        //                if(![imageUrlString isKindOfClass:[NSNull class]]){
+        //                        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlString]
+        //                                          placeholderImage:nil
+        //                                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        //                                                     if (error) {
+        //                                                         NSLog(@"Error occured : %@", [error description]);
+        //                                                     }
+        //                                                 }];
+        //                }
         
         
         //------------ using GCD ---------
         if(![imageUrlString isKindOfClass:[NSNull class]]){
             
             dispatch_async(dispatch_get_global_queue(0,0), ^{
-               NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlString]];
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrlString]];
                 if ( data == nil )
                     return;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // WARNING: is the cell still using the same data by this point??
-                    cell.imageView.image = [UIImage imageWithData: data];
+                    cellImageView.image = [UIImage imageWithData: data];
                 });
             });
         }
@@ -129,8 +168,8 @@
             cell.backgroundColor = cellColour;
         }
     }
- 
-
+    
+    
     //--------- for multiline cell ------------
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
